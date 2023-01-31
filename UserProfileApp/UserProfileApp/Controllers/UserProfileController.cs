@@ -11,35 +11,24 @@ namespace UserProfileApp.Controllers
         // GET: UserProfile
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: UserProfile/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: UserProfile/Create
-        public ActionResult Create()
-        {
-            return View();
+            return View(new Models.UserProfile());
         }
 
         // POST: UserProfile/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Index(Models.UserProfile userProfile)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            int userAge = userProfile.Age;
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            //It thinks the year is 2024 when I test this, hence the -1
+            int yearIfHadBDay = System.DateTime.Now.Year -1 -userAge;
+            int yearIfNoBDay = yearIfHadBDay++;
+
+            ViewBag.Description = $"{userProfile.FirstName}/{userProfile.LastName},{userProfile.Age},{userProfile.Occupation}";
+            ViewBag.RandomQuote = MovieQuoteDatabase.GetRandomQuote();
+            ViewBag.EstimatedBirthYear = $"If you had your birthday this year, I think you were born in {yearIfHadBDay}, otherwise you were born in {yearIfNoBDay}";
+
+            return View(userProfile);
         }
     }
 }

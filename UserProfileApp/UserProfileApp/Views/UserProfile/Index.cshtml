@@ -7,7 +7,7 @@
 <h2 style="color:seagreen"><strong>Your Profile</strong></h2>
 <p style="color:seagreen"><strong>This is your profile page, where you can see all of your user info and a fun random movie quote :)</strong></p>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Index", "UserProfile", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
@@ -49,11 +49,27 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" style="background-color:seagreen; color:white; font-size:2rem" />
+                <input type="submit" value="Create Profile" class="btn btn-default" style="background-color:seagreen; color:white; font-size:2rem" />
             </div>
         </div>
     </div>
 }
+
+<div>
+    <h2><strong>Here is your profile information:</strong></h2>
+    <h4><strong>Description:</strong></h4>
+    <p>
+        @ViewBag.Description
+    </p>
+    <h4><strong>Estimated Birth Year:</strong></h4>
+    <p>
+        @ViewBag.EstimatedBirthYear
+    </p>
+    <h4><strong>Random Quote:</strong></h4>
+    <p style="margin-bottom: 5em">
+        @ViewBag.RandomQuote
+    </p>
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")
