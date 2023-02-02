@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Cars
+@{
+    ViewBag.Title = "Car Page";
+}
+
+<script>
+function changeCar2ToBlue(){
+    document.getElementById("car2").style.color = "blue";
+}
+function changeCar3ToBigPurple() {
+    document.getElementById("car3").style.color = "purple";
+    document.getElementById("car3").style.fontSize = "50px";
+}
+</script>
+
+<link rel="stylesheet" href="../../StyleSheets/Main.css" />
+
+<div class="car_box" style="justify-content:center; display: flex; margin: 50px">
+    <h2 id="car1" style="font-weight:bold;">@Html.DisplayFor(model => model.Car1Name)</h2>
+    <button style="margin-left:50px; background-color:black; color: white; padding:10px; border-radius:10px;" 
+    onclick="document.getElementById('car1').style.color='red'">Change text</button>
+</div>
+<div class="car_box" style="justify-content:center; display: flex; margin: 50px">
+    <h2 id="car2" style="font-weight:bold;">@Html.DisplayFor(model => model.Car2Name)</h2>
+    <button style="margin-left:50px; background-color:black; color: white; padding:10px; border-radius:10px;"
+            onclick="changeCar2ToBlue()">Change text</button>
+</div>
+<div class="car_box" style="justify-content:center; display: flex; margin: 50px">
+    <h2 id="car3" style="font-weight:bold;">@Html.DisplayFor(model => model.Car3Name)</h2>
+    <div>
+        <button style="margin-left:50px; background-color:black; color: white; padding:10px; border-radius:10px;"
+                onclick="changeCar3ToBigPurple()">
+            Change text
+        </button>
+    </div>
+</div>
