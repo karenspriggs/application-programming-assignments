@@ -31,7 +31,7 @@ namespace UserProfileApp.Controllers
             ViewBag.RandomQuote = MovieQuoteDatabase.GetRandomQuote();
             ViewBag.EstimatedBirthYear = $"If you had your birthday this year, I think you were born in {yearIfHadBDay}, otherwise you were born in {yearIfNoBDay}";
 
-            return View(userProfile);
+            return View();
         }
     }
 }
