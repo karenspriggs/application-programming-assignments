@@ -11,7 +11,7 @@ namespace UserProfileApp.Controllers
         // GET: UserProfile
         public ActionResult Index()
         {
-            return View(new Models.UserProfile());
+            return View();
         }
 
         // This action is executed when the user clicks the submit button
