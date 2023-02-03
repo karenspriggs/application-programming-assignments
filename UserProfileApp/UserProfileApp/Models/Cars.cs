@@ -1,4 +1,4 @@
-﻿namespace CSSExample.Models
+﻿namespace UserProfileApp.Models
 {
     public class Cars
     {

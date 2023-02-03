@@ -1,0 +1,33 @@
+﻿@model UserProfileApp.Models.Cars
+
+@{
+    ViewBag.Title = "Cars";
+}
+
+<script>
+    function changeCar2ToBlue() {
+        document.getElementById("car2").style.color = "blue";
+    }
+</script>
+
+<link href="~/Content/Custom.css" rel="stylesheet" />
+<script src="~/Content/CarDemo.js"></script>
+
+<div class="car_box">
+    <h2 id="car1">Toyota</h2>
+    <div>
+        <button onclick="document.getElementById('car1').style.color='red'">Change text</button>
+    </div>
+</div>
+<div class="car_box">
+    <h2 id="car2">Honda</h2>
+    <div>
+        <button onclick="changeCar2ToBlue()">Change text</button>
+    </div>
+</div>
+<div class="car_box">
+    <h2 id="car3">Suzuki</h2>
+    <div>
+        <button onclick="changeCar3ToBigPurple()">Change text</button>
+    </div>
+</div>
