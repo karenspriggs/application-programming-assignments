@@ -1,16 +1,21 @@
 ﻿.car_box {
-    justify-content: center;
     display: flex;
     margin: 50px;
+    align-content: center;
 }
 .car_box button {
     margin-left:50px;
     background-color:black;
     color: white;
+    font-size: 1.8rem;
     padding:10px;
     border-radius:10px;
 }
 .car_box h2{
     font-weight:bold;
-
+}
+.car_page {
+    display: grid;
+    grid-auto-columns: auto;
+    justify-content: center;
 }
