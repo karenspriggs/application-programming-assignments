@@ -11,7 +11,8 @@ namespace UserProfileApp.Controllers
         // GET: CarsController
         public ActionResult Index()
         {
-            return View();
+            Models.Cars carsModel = new Models.Cars() { Car1Name = "Honda", Car2Name = "Toyota", Car3Name = "Suzuki" };
+            return View(carsModel);
         }
 
         // GET: CarsController/Details/5

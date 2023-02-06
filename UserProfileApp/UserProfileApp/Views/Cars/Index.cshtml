@@ -16,7 +16,7 @@
 <div class="car_page">
     <div class="car_box">
         <div>
-            <h2 id="car1">Toyota</h2>
+            <h2 id="car1">@Html.DisplayFor(model => model.Car1Name)</h2>
         </div>
         <div>
             <button onclick="document.getElementById('car1').style.color='red'">Change text</button>
@@ -24,7 +24,7 @@
     </div>
     <div class="car_box">
         <div>
-            <h2 id="car2">Honda</h2>
+            <h2 id="car2">@Html.DisplayFor(model => model.Car2Name)</h2>
         </div>
         <div>
             <button onclick="changeCar2ToBlue()">Change text</button>
@@ -32,7 +32,7 @@
     </div>
     <div class="car_box">
         <div>
-            <h2 id="car3">Suzuki</h2>
+            <h2 id="car3">@Html.DisplayFor(model => model.Car3Name)</h2>
         </div>
         <div>
             <button onclick="changeCar3ToBigPurple()">Change text</button>
