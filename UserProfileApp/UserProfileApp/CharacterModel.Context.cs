@@ -13,10 +13,10 @@ namespace UserProfileApp
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PROG455FA23Entities : DbContext
+    public partial class Entities : DbContext
     {
-        public PROG455FA23Entities()
-            : base("name=PROG455FA23Entities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,8 +25,6 @@ namespace UserProfileApp
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Student> Students { get; set; }
-
-        public System.Data.Entity.DbSet<UserProfileApp.Character> Characters { get; set; }
+        public virtual DbSet<Character> Characters { get; set; }
     }
 }
