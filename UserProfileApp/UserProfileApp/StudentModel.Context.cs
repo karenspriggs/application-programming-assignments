@@ -27,6 +27,6 @@ namespace UserProfileApp
     
         public virtual DbSet<Student> Students { get; set; }
 
-        public System.Data.Entity.DbSet<UserProfileApp.Character> Characters { get; set; }
+        public DbSet<Character> Characters { get; set; }
     }
 }

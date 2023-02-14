@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using UserProfileApp;
+using UserProfileApp.Services;
 
 namespace UserProfileApp.Controllers
 {
     public class CharactersController : Controller
     {
         private PROG455FA23Entities db = new PROG455FA23Entities();
+        private CharacterService characterService = new CharacterService();
 
         // GET: Characters
         public ActionResult Index()
