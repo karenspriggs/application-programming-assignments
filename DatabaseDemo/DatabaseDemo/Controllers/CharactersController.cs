@@ -123,10 +123,7 @@ namespace DatabaseDemo.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            charService.Dispose(disposing);
             base.Dispose(disposing);
         }
     }

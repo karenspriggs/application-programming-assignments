@@ -62,5 +62,17 @@ namespace DatabaseDemo.Services
             db.Characters.Remove(character);
             db.SaveChanges();
         }
+
+        /// <summary>
+        /// Disposes of unmanaged resources in the character database
+        /// </summary>
+        /// <param name="disposing"></param>
+        public void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+        }
     }
 }
