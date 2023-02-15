@@ -13,7 +13,6 @@ namespace DatabaseDemo.Controllers
 {
     public class CharactersController : Controller
     {
-        private PROG455FA23Entities db = new PROG455FA23Entities();
         private CharacterService charService = new CharacterService();
 
         // GET: Characters
