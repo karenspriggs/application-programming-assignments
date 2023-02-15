@@ -109,6 +109,7 @@ namespace DatabaseDemo.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(character);
         }
 
