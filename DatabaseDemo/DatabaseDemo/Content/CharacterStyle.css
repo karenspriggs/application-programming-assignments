@@ -1,0 +1,26 @@
+﻿body {
+    font-size: 2rem;
+}
+
+.characterpage a {
+    font-size: 3rem;
+    font-weight: bold;
+    color: cadetblue;
+}
+
+.characterpage a.hover {
+    color: black;
+    transition: color linear 1s;
+}
+
+.characterpage h2 {
+    font-size: 5rem;
+    font-weight: bold;
+    justify-items: center;
+    color: seagreen;
+}
+
+.characterpage h4 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}

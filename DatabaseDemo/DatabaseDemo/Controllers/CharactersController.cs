@@ -7,31 +7,36 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DatabaseDemo;
+using DatabaseDemo.Services;
 
 namespace DatabaseDemo.Controllers
 {
     public class CharactersController : Controller
     {
         private PROG455FA23Entities db = new PROG455FA23Entities();
+        private CharacterService charService = new CharacterService();
 
         // GET: Characters
         public ActionResult Index()
         {
-            return View(db.Characters.ToList());
+            return View(charService.ReturnCharacterList());
         }
 
         // GET: Characters/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id == null) 
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = db.Characters.Find(id);
+
+            Character character = charService.FindCharacterWithID(id);
+
             if (character == null)
             {
                 return HttpNotFound();
             }
+
             return View(character);
         }
 
@@ -50,8 +55,7 @@ namespace DatabaseDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Characters.Add(character);
-                db.SaveChanges();
+                charService.CreateCharacter(character);
                 return RedirectToAction("Index");
             }
 
@@ -65,9 +69,12 @@ namespace DatabaseDemo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = db.Characters.Find(id);
+
+            Character character = charService.FindCharacterWithID(id);
+
             if (character == null)
             {
+             
                 return HttpNotFound();
             }
             return View(character);
@@ -82,8 +89,7 @@ namespace DatabaseDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(character).State = EntityState.Modified;
-                db.SaveChanges();
+                charService.EditCharacter(character);
                 return RedirectToAction("Index");
             }
             return View(character);
@@ -96,7 +102,9 @@ namespace DatabaseDemo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Character character = db.Characters.Find(id);
+
+            Character character = charService.FindCharacterWithID(id);
+
             if (character == null)
             {
                 return HttpNotFound();
@@ -109,9 +117,7 @@ namespace DatabaseDemo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Character character = db.Characters.Find(id);
-            db.Characters.Remove(character);
-            db.SaveChanges();
+            charService.DeleteCharacter(id);
             return RedirectToAction("Index");
         }
 

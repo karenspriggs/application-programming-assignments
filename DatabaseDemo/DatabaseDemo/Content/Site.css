@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.character_table_headers tr{
+    font-size: 2rem;
+    font-weight: bold;
+}
