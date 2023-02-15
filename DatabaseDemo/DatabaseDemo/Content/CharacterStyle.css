@@ -1,26 +1,32 @@
 ﻿body {
     font-size: 2rem;
+    line-height: 2em;
 }
 
 .characterpage a {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
-    color: cadetblue;
-}
-
-.characterpage a.hover {
-    color: black;
-    transition: color linear 1s;
+    color: darkslategrey;
+    padding: 10px;
+    margin: 1em;
 }
 
 .characterpage h2 {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
     justify-items: center;
-    color: seagreen;
 }
 
 .characterpage h4 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
+    margin: 10px;
+}
+
+.background_color_box {
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px 50px;
+    margin: 30px 40px;
+    box-shadow: 10px 10px black;
 }
