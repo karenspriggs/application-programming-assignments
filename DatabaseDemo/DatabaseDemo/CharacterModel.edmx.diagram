@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5408039f97c149a68d9c990ca591ac51" Name="Diagram1">
         <EntityTypeShape EntityType="PROG455FA23Model.Character" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PROG455FA23Model.Map" Width="1.5" PointX="4.875" PointY="1.375" />
+        <AssociationConnector Association="PROG455FA23Model.FK_Map_Character_IDs" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
