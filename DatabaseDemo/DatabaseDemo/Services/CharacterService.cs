@@ -34,9 +34,9 @@ namespace DatabaseDemo.Services
 
         public void CheckMapList(Character character)
         {
-            if (character.Maps.Count == 0 || character.Maps == null)
+            if (character.Maps == null)
             {
-                //character.Maps = new List<Map>
+                character.Maps = new List<Map>();
             }
         }
 
