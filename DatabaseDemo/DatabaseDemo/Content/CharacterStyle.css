@@ -7,7 +7,6 @@
     font-size: 2rem;
     font-weight: bold;
     color: darkslategrey;
-    padding: 10px;
     margin: 1em;
 }
 
@@ -26,7 +25,14 @@
 .background_color_box {
     background-color: lightblue;
     border-radius: 10px;
-    padding: 10px 50px;
-    margin: 30px 40px;
+    padding: 10px 20px;
+    margin: 30px 20px;
     box-shadow: 10px 10px black;
+}
+
+.table_color_box {
+    background-color: lightblue;
+    border-radius: 10px;
+    box-shadow: 10px 10px black;
+    padding: 10px 20px;
 }

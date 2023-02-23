@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/CharacterStyle.css" rel="stylesheet" />
+
 <div class="characterpage">
     <h2>View Details</h2>
-
     <div>
         <h4>Character Details</h4>
         <div class="background_color_box">
@@ -82,6 +82,22 @@
 
                 <dd>
                     @Html.DisplayFor(model => model.NPC)
+                </dd>
+
+                @if (Model.Maps.Count > 0)
+                {
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Maps)
+                    </dt>
+                }
+
+                <dd>
+                    @foreach (var map in Model.Maps)
+                    {
+                        <p>
+                            @Html.DisplayFor(modelItem => map.MapName)
+                        </p>
+                    }
                 </dd>
 
             </dl>

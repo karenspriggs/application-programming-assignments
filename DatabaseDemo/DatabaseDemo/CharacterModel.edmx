@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PROG455FA23Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PROG455FA23Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Character">
           <Key>
             <PropertyRef Name="ID" />
@@ -20,11 +20,35 @@
           <Property Name="HP_Max" Type="int" Nullable="false" />
           <Property Name="NPC" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="MapID" />
+          </Key>
+          <Property Name="MapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CharacterID" Type="int" Nullable="false" />
+          <Property Name="MapName" Type="nchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Map_Character_IDs">
+          <End Role="Character" Type="Self.Character" Multiplicity="1" />
+          <End Role="Map" Type="Self.Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PROG455FA23ModelStoreContainer">
           <EntitySet Name="Character" EntityType="Self.Character" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Map" EntityType="Self.Map" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Map_Character_IDs" Association="Self.FK_Map_Character_IDs">
+            <End Role="Character" EntitySet="Character" />
+            <End Role="Map" EntitySet="Map" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PROG455FA23Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -42,10 +66,37 @@
           <Property Name="HP_Initial" Type="Int32" Nullable="false" />
           <Property Name="HP_Max" Type="Int32" Nullable="false" />
           <Property Name="NPC" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Maps" Relationship="PROG455FA23Model.FK_Map_Character_IDs" FromRole="Character" ToRole="Map" />
         </EntityType>
         <EntityContainer Name="PROG455FA23Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Characters" EntityType="Self.Character" />
+          <EntitySet Name="Maps" EntityType="PROG455FA23Model.Map" />
+          <AssociationSet Name="FK_Map_Character_IDs" Association="PROG455FA23Model.FK_Map_Character_IDs">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Map" EntitySet="Maps" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Map">
+          <Key>
+            <PropertyRef Name="MapID" />
+          </Key>
+          <Property Name="MapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CharacterID" Type="Int32" Nullable="false" />
+          <Property Name="MapName" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Character" Relationship="PROG455FA23Model.FK_Map_Character_IDs" FromRole="Map" ToRole="Character" />
+        </EntityType>
+        <Association Name="FK_Map_Character_IDs">
+          <End Type="PROG455FA23Model.Character" Role="Character" Multiplicity="1" />
+          <End Type="PROG455FA23Model.Map" Role="Map" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Character">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Map">
+              <PropertyRef Name="CharacterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -65,6 +116,15 @@
                 <ScalarProperty Name="HP_Initial" ColumnName="HP_Initial" />
                 <ScalarProperty Name="HP_Max" ColumnName="HP_Max" />
                 <ScalarProperty Name="NPC" ColumnName="NPC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Maps">
+            <EntityTypeMapping TypeName="PROG455FA23Model.Map">
+              <MappingFragment StoreEntitySet="Map">
+                <ScalarProperty Name="MapName" ColumnName="MapName" />
+                <ScalarProperty Name="CharacterID" ColumnName="CharacterID" />
+                <ScalarProperty Name="MapID" ColumnName="MapID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

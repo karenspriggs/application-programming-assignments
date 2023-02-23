@@ -32,6 +32,14 @@ namespace DatabaseDemo.Services
             return character;
         }
 
+        public void CheckMapList(Character character)
+        {
+            if (character.Maps == null)
+            {
+                character.Maps = new List<Map>();
+            }
+        }
+
         /// <summary>
         /// Adds a character to the database
         /// </summary>

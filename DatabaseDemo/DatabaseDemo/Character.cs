@@ -14,6 +14,12 @@ namespace DatabaseDemo
     
     public partial class Character
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Character()
+        {
+            this.Maps = new HashSet<Map>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string Element_Type { get; set; }
@@ -24,5 +30,8 @@ namespace DatabaseDemo
         public int HP_Initial { get; set; }
         public int HP_Max { get; set; }
         public bool NPC { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Map> Maps { get; set; }
     }
 }
