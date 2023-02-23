@@ -78,8 +78,7 @@ namespace AuthenticationExample.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                userService.AddUser(user);
                 return RedirectToAction("Index");
             }
 

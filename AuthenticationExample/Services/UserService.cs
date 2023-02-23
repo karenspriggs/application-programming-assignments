@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -38,6 +39,21 @@ namespace AuthenticationExample.Services
 
                 return stringBuilder.ToString();
             }
+        }
+
+        public void AddUser(User user)
+        {
+            User userToAdd = user;
+            userToAdd.Password = Encrypt(user.Password);
+            
+            try
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+            } catch (Exception e)
+            {
+                // 
+            }            
         }
     }
 }
