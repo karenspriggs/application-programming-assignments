@@ -21,6 +21,8 @@ namespace AuthorizationExample.Services
                 return false;
             }
 
+            int passlength = currentUser.Password.Length;
+
             return currentUser.Password == Encrypt(_passwordinput);
         }
 

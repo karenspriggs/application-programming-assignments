@@ -25,7 +25,7 @@ namespace AuthorizationExample.Controllers
                 return RedirectToAction("UserList");
             }
 
-            return View();
+            return View(db.Users.ToList());
         }
 
         public ActionResult UserList()
@@ -92,7 +92,7 @@ namespace AuthorizationExample.Controllers
                 Session.Add("LoggedIn", false);
             }
 
-            return View(user);
+            return View();
         }
 
         // GET: Users/Create
