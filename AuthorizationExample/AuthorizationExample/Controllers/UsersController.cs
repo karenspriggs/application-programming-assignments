@@ -15,11 +15,34 @@ namespace AuthorizationExample.Controllers
     {
         private PROG455FA23Entities db = new PROG455FA23Entities();
         UserService userService = new UserService();
+        AuthService authService = new AuthService();
 
         // GET: Users
         public ActionResult Index()
         {
+            if (Session["LoggedIn"]?.Equals(true) == true)
+            {
+                return RedirectToAction("UserList");
+            }
+
+            return View();
+        }
+
+        public ActionResult UserList()
+        {
+            User currentUser = userService.GetUser((string)Session["Username"]);
+
+            if (!authService.IsPageAuthorized("Create", currentUser))
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
             return View(db.Users.ToList());
+        }
+
+        public ActionResult AccessDenied()
+        {
+            return View();
         }
 
         // GET: Users/Details/5
@@ -42,6 +65,11 @@ namespace AuthorizationExample.Controllers
         {
             // Check if authorized, redirect to index if true
             // Otherwise go back to login page
+            if (Session["LoggedIn"]?.Equals(true) == true)
+            {
+                return RedirectToAction("UserList");
+            }
+
             return View();
         }
 
@@ -55,10 +83,13 @@ namespace AuthorizationExample.Controllers
             if (isSuccessfulLogin)
             {
                 ViewBag.Message = "Login successful!";
+                Session.Add("LoggedIn", true);
+                Session.Add("Username", user.Username);
             }
             else
             {
                 ViewBag.Message = "Invalid login credentials, please try again.";
+                Session.Add("LoggedIn", false);
             }
 
             return View(user);
@@ -67,6 +98,13 @@ namespace AuthorizationExample.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            User currentUser = userService.GetUser((string)Session["Username"]);
+
+            if (!authService.IsPageAuthorized("Create", currentUser))
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
             return View();
         }
 
@@ -89,6 +127,13 @@ namespace AuthorizationExample.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            User currentUser = userService.GetUser((string)Session["Username"]);
+
+            if (!authService.IsPageAuthorized("Edit", currentUser))
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -120,6 +165,13 @@ namespace AuthorizationExample.Controllers
         // GET: Users/Delete/5
         public ActionResult Delete(int? id)
         {
+            User currentUser = userService.GetUser((string)Session["Username"]);
+
+            if (!authService.IsPageAuthorized("Delete", currentUser))
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
