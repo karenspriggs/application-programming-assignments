@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AuthorizationExample;
+using AuthorizationExample.Services;
 
 namespace AuthorizationExample.Controllers
 {
     public class UsersController : Controller
     {
         private PROG455FA23Entities db = new PROG455FA23Entities();
+        UserService userService = new UserService();
 
         // GET: Users
         public ActionResult Index()
@@ -35,6 +37,33 @@ namespace AuthorizationExample.Controllers
             return View(user);
         }
 
+        // GET: Users/Login
+        public ActionResult Login()
+        {
+            // Check if authorized, redirect to index if true
+            // Otherwise go back to login page
+            return View();
+        }
+
+        // POST: Users/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login([Bind(Include = "Username,Password")] User user)
+        {
+            bool isSuccessfulLogin = userService.IsValidPassword(user.Username, user.Password);
+
+            if (isSuccessfulLogin)
+            {
+                ViewBag.Message = "Login successful!";
+            }
+            else
+            {
+                ViewBag.Message = "Invalid login credentials, please try again.";
+            }
+
+            return View(user);
+        }
+
         // GET: Users/Create
         public ActionResult Create()
         {
@@ -46,12 +75,11 @@ namespace AuthorizationExample.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "User_ID,First_Name,Last_Name,Username,Password,Role")] User user)
+        public ActionResult Create([Bind(Include = "UserID,First_Name,Last_Name,Username,Password")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
-                db.SaveChanges();
+                userService.AddUser(user);
                 return RedirectToAction("Index");
             }
 
