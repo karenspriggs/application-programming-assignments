@@ -26,7 +26,7 @@ namespace AuthorizationExample.Services
 
             if (pageName == "Create")
             {
-                if (currentAuthRole == "Admin" || currentAuthRole == "Super Admin")
+                if (currentAuthRole == "Admi" || currentAuthRole == "Super Admin")
                 {
                     return true;
                 }

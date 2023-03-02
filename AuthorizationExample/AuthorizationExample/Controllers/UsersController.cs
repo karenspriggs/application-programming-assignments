@@ -32,7 +32,7 @@ namespace AuthorizationExample.Controllers
         {
             User currentUser = userService.GetUser((string)Session["Username"]);
 
-            if (!authService.IsPageAuthorized("Create", currentUser))
+            if (!authService.IsPageAuthorized("List", currentUser))
             {
                 return RedirectToAction("AccessDenied");
             }
@@ -85,6 +85,7 @@ namespace AuthorizationExample.Controllers
                 ViewBag.Message = "Login successful!";
                 Session.Add("LoggedIn", true);
                 Session.Add("Username", user.Username);
+                return RedirectToAction("Index");
             }
             else
             {
