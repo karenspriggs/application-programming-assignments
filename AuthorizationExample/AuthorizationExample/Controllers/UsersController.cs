@@ -25,7 +25,7 @@ namespace AuthorizationExample.Controllers
                 return RedirectToAction("UserList");
             }
 
-            return View(db.Users.ToList());
+            return View();
         }
 
         public ActionResult UserList()
@@ -37,7 +37,7 @@ namespace AuthorizationExample.Controllers
                 return RedirectToAction("AccessDenied");
             }
 
-            return View(db.Users.ToList());
+            return View(userService.ReturnUserList());
         }
 
         public ActionResult AccessDenied()
@@ -52,7 +52,7 @@ namespace AuthorizationExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user = userService.FindUserWithID(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -139,7 +139,7 @@ namespace AuthorizationExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user = userService.FindUserWithID(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -156,8 +156,7 @@ namespace AuthorizationExample.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                userService.EditUser(user);
                 return RedirectToAction("Index");
             }
             return View(user);
@@ -177,7 +176,7 @@ namespace AuthorizationExample.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user =userService.FindUserWithID(id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -190,18 +189,13 @@ namespace AuthorizationExample.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
+            userService.DeleteUser(id);
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
+            userService.Dispose(disposing);
             base.Dispose(disposing);
         }
     }

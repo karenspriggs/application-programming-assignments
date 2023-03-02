@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AuthorizationExample.Services
 {
@@ -58,9 +60,41 @@ namespace AuthorizationExample.Services
             }
         }
 
+        public List<User> ReturnUserList()
+        {
+            return db.Users.ToList();
+        }
+
         public User GetUser(string _username)
         {
             return db.Users.Where(user => user.Username == _username).FirstOrDefault();
+        }
+
+        public User FindUserWithID(int? ID)
+        {
+            User user = db.Users.Find(ID);
+            return user;
+        }
+
+        public void EditUser(User user)
+        {
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+
+        public void DeleteUser(int ID)
+        {
+            User user = FindUserWithID(ID);
+            db.Users.Remove(user);
+            db.SaveChanges();
+        }
+
+        public void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿body {
+    font-size: 2rem;
+    line-height: 2em;
+}
+
+.userpage a {
+    font-size: 2rem;
+    font-weight: bold;
+    color: darkslategrey;
+    margin: 1em;
+}
+
+.userpage h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    justify-items: center;
+}
+
+.userpage h4 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.background_color_box {
+    background-color: lightblue;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 30px 20px;
+    box-shadow: 10px 10px black;
+}
+
+.table_color_box {
+    background-color: lightblue;
+    border-radius: 10px;
+    box-shadow: 10px 10px black;
+    padding: 10px 20px;
+}

@@ -4,13 +4,13 @@
     ViewBag.Title = "UserList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="~/Content/UserStyles.css" rel="stylesheet" />
 <h2>UserList</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table background_color_box">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.First_Name)
@@ -20,9 +20,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Role)
@@ -42,14 +39,10 @@
             @Html.DisplayFor(modelItem => item.Username)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Role)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.User_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.User_ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.User_ID })
         </td>
     </tr>

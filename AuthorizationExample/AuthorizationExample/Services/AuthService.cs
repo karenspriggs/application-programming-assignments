@@ -14,11 +14,12 @@ namespace AuthorizationExample.Services
                 return false;
             }
 
-            string currentAuthRole = currentUser.Role;
+            string rawAuthRole = currentUser.Role;
+            string currentAuthRole = rawAuthRole.Replace(@" ", string.Empty);
 
             if (pageName == "List")
             {
-                if (currentAuthRole == "User" || currentAuthRole == "Admin" || currentAuthRole == "Super Admin")
+                if (currentAuthRole == "User" || currentAuthRole == "Admin" || currentAuthRole == "SuperAdmin")
                 {
                     return true;
                 }
@@ -26,7 +27,7 @@ namespace AuthorizationExample.Services
 
             if (pageName == "Create")
             {
-                if (currentAuthRole == "Admi" || currentAuthRole == "Super Admin")
+                if (currentAuthRole == "Admin" || currentAuthRole == "SuperAdmin")
                 {
                     return true;
                 }
@@ -34,7 +35,7 @@ namespace AuthorizationExample.Services
 
             if (pageName == "Edit")
             {
-                if (currentAuthRole == "Admin" || currentAuthRole == "Super Admin")
+                if (currentAuthRole == "Admin" || currentAuthRole == "SuperAdmin")
                 {
                     return true;
                 }
@@ -42,7 +43,7 @@ namespace AuthorizationExample.Services
 
             if (pageName == "Delete")
             {
-                if (currentAuthRole == "Super Admin")
+                if (currentAuthRole == "SuperAdmin")
                 {
                     return true;
                 }
