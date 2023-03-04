@@ -12,6 +12,12 @@ namespace ConsoleCircus
         public string Species { get; set; }
         public int Age { get; set; }
 
+        public Animal()
+        {
+            this.Name = "Generic Animal";
+            this.Age = 0;
+        }
+
         public Animal(string _name, int _age)
         {
             this.Name = _name;

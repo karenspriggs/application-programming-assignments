@@ -8,6 +8,10 @@ namespace ConsoleCircus
 {
     class Tiger: Animal
     {
+        public Tiger() : base()
+        {
+            this.Species = "Monkey";
+        }
         public Tiger(string _name, int _age) : base(_name, _age)
         {
             this.Species = "Tiger";

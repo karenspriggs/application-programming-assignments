@@ -23,7 +23,7 @@ namespace ConsoleCircus
 
         public void PrintShow()
         {
-            Console.WriteLine("It is time for the circus to begin!");
+            Console.WriteLine("It is time for the circus to begin!\n");
 
             foreach(var performer in circusMammals)
             {
@@ -32,22 +32,23 @@ namespace ConsoleCircus
                     Console.WriteLine(((Animal)performer).GetInfo());
                 }
 
-                if (performer.GetType().BaseType == typeof(Human))
+                if (performer.GetType() == typeof(Human))
                 {
                     Console.WriteLine(((Human)performer).GetInfo());
                 }
 
-                Console.WriteLine(performer.PerformTrick());
+                Console.WriteLine($"{performer.PerformTrick()}\n");
             }
         }
 
         public void PrintTypes()
         {
-            var performersWAnimalBase = circusMammals.Where(animal => animal.GetType().BaseType == typeof(Animal));
+            Console.WriteLine("\nHere are the animals that implement the mammal interface but not the abstract animal class");
+            var performersWNoAnimalBase = circusMammals.Where(animal => animal.GetType().BaseType != typeof(Animal) && animal.GetType().GetInterfaces().Contains(typeof(IMammal)));
 
-            foreach(var performerWAnimalBase in performersWAnimalBase)
+            foreach(var performerWNoAnimalBase in performersWNoAnimalBase)
             {
-                Console.WriteLine(performerWAnimalBase.GetType());
+                Console.WriteLine(performerWNoAnimalBase.GetType());
             }
         }
 
@@ -55,6 +56,7 @@ namespace ConsoleCircus
         {
             PrintShow();
             PrintTypes();
+            Console.WriteLine("\nThe circus is over! Thank you for coming.");
             Console.ReadKey();
         }
     }
