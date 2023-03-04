@@ -12,5 +12,10 @@ namespace ConsoleCircus
         {
             this.Species = "Tiger";
         }
+
+        public override string PerformTrick()
+        {
+            return $"{Name} the {Species} jumps through a flaming hoop!";
+        }
     }
 }

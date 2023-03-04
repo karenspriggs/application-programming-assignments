@@ -18,14 +18,14 @@ namespace ConsoleCircus
             this.Age = _age;
         }
 
-        public void GetInfo()
+        public string GetInfo()
         {
-
+            return $"{Name} is a {Species} that is {Age} years old";
         }
 
-        public void PerformTrick()
+        public virtual string PerformTrick()
         {
-
+            return $"{Name} the {Species} performed a trick!";
         }
     }
 }

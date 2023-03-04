@@ -12,5 +12,10 @@ namespace ConsoleCircus
         {
             this.Species = "Monkey";
         }
+
+        public override string PerformTrick()
+        {
+            return $"{Name} the {Species} did a handstand while juggling with their feet";
+        }
     }
 }

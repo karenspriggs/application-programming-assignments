@@ -10,6 +10,8 @@ namespace ConsoleCircus
     {
         static void Main(string[] args)
         {
+            Circus applicationCircus = new Circus();
+            applicationCircus.PerformShow();
         }
     }
 }

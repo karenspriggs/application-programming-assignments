@@ -12,6 +12,6 @@ namespace ConsoleCircus
         string Species { get; set; }
         int Age { get; set; }
 
-        void PerformTrick();
+        string PerformTrick();
     }
 }
