@@ -37,9 +37,13 @@ namespace UnitTestDemo
 
         public static bool IsPrime(int input)
         {
+            if (input == 1 || input == 0) return false;
+
+            if (input == 2) return true;
+
             if (input % 2 == 0) return false;
 
-            for(int i = 0; i < input/2; i++)
+            for(int i = 2; i < input/2; i++)
             {
                 if (input % i == 0)
                 {
@@ -54,7 +58,9 @@ namespace UnitTestDemo
         {
             List<int> divisors = new List<int>();
 
-            for(int i = 0; i < input / 2; i++)
+            if (input == 0) return divisors;
+
+            for(int i = 1; i < input+1; i++)
             {
                 if (!IsPrime(i) && input % i == 0)
                 {
@@ -65,7 +71,7 @@ namespace UnitTestDemo
             return divisors;
         }
 
-        public static double GetFloorOfFraction(double num1, double num2)
+        public static double GetFloorOfFraction(int num1, int num2)
         {
             double numerator;
             double denominator;
