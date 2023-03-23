@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MansionExplorationGame
+namespace MansionExplorationGame.Level
 {
-    class Program
+    public class TrueFalseLevel : LevelBase
     {
-        static void Main(string[] args)
+        public TrueFalseLevel(string _riddleID) : base(_riddleID)
         {
-            new Mansion();
+
         }
     }
 }

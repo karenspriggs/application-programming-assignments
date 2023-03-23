@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace MansionExplorationGame
 {
-    class Program
+    public interface IItem
     {
-        static void Main(string[] args)
-        {
-            new Mansion();
-        }
+        string Name { get; set; }
+        string Type { get; set; }
+        string Describe();
     }
 }

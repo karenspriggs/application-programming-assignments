@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MansionExplorationGame", "MansionExplorationGame\MansionExplorationGame.csproj", "{B7976649-79CF-4806-A7A4-3ECFE4C4F04D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MansionTests", "MansionTests\MansionTests.csproj", "{27BDE9FE-C528-4E1A-938E-03036358E64F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B7976649-79CF-4806-A7A4-3ECFE4C4F04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7976649-79CF-4806-A7A4-3ECFE4C4F04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7976649-79CF-4806-A7A4-3ECFE4C4F04D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27BDE9FE-C528-4E1A-938E-03036358E64F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27BDE9FE-C528-4E1A-938E-03036358E64F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27BDE9FE-C528-4E1A-938E-03036358E64F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27BDE9FE-C528-4E1A-938E-03036358E64F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
