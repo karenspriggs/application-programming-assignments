@@ -1,0 +1,35 @@
+﻿@model UserProfileApp2.Models.UserProfile
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/UserStyle.css" rel="stylesheet" />
+<div class="profilepage">
+    <h2>UserProfile</h2>
+    <div class="profilebox">
+        <div class="profilesection">
+            <h4>Profile Details</h4>
+            <p>
+                @Html.DisplayFor(model => model.FirstName)/@Html.DisplayFor(model => model.LastName).
+                @Html.DisplayFor(model => model.Age).
+                @Html.DisplayFor(model => model.Occupation).
+            </p>
+        </div>
+        <div class="profilesection">
+            <h4>Estimated birth year</h4>
+            <p>
+                @Html.DisplayFor(model => model.EstimatedBirthYear)
+            </p>
+        </div>
+        <div class="profilesection">
+            <h4>Random Movie Quote</h4>
+            <p>
+                @Html.DisplayFor(model => model.MovieQuote)
+            </p>
+        </div>
+    </div class="profilebox">
+</div>
+<p>
+    @Html.ActionLink("Back to User Creation", "Index")
+</p>

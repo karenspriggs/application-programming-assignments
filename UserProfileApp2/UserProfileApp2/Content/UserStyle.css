@@ -1,0 +1,32 @@
+﻿.profilebox {
+    background-color: #1B3646;
+    justify-content:center;
+    color: white;
+    margin: 40px 100px;
+    padding: 20px 50px 40px 20px;
+    border-radius: 20px;
+    box-shadow: 1px 1px black;
+}
+
+.profilesection{
+    padding: 20px;
+}
+
+.h4 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.profilepage {
+    background-color: #A3AEB5;
+    border-radius: 20px;
+    padding: 20px 100px;
+    margin: 10px;
+}
+
+.profilepage h2, .profilebox h2 {
+    font-size: 4em;
+    text-shadow: 1px 1px black;
+    font-weight: bolder;
+    color: white;
+}
