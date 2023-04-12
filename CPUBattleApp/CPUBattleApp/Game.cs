@@ -79,10 +79,13 @@ namespace CPUBattleApp
                 PlayerItemInput(playerCharacter, charService);
             }
 
+            // Validate all the inputs we just got
+            List<ValidationResult> newValidationErrors = charService.ValidateCharacterEntry(playerCharacter);
+
             // If there are any errors in the list, restart the process
-            if (validationErrors.Count > 0)
+            if (newValidationErrors.Count > 0)
             {
-                FixPlayerSetupErrors(playerCharacter, validationErrors);
+                FixPlayerSetupErrors(playerCharacter, newValidationErrors);
             }
         }
 
@@ -160,8 +163,11 @@ namespace CPUBattleApp
             while (playerCharacter.TowerHeight < 100 && computer.TowerHeight < 100)
             {
                 DoRound(playerCharacter, computer);
-                // Do wind damage
-                wind.Notify();
+                if (!CheckForWin(playerCharacter, computer))
+                {
+                    // Do wind damage
+                    wind.Notify();
+                }
             }
 
             // Player won
@@ -177,6 +183,11 @@ namespace CPUBattleApp
             }
 
             Console.ReadKey();
+        }
+
+        bool CheckForWin(ICharacter playerCharacter, ICharacter computer)
+        {
+            return (playerCharacter.TowerHeight > 100 || computer.TowerHeight > 100);
         }
 
         public void DoRound(ICharacter playerCharacter, ICharacter computer)

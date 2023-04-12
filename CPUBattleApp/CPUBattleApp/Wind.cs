@@ -15,6 +15,11 @@ namespace CPUBattleApp
         public int actualWindDamage;
         Random random = new Random();
 
+        public int GetListenerCount()
+        {
+            return characters.Count();
+        }
+
         // Initialize wind values
         public void StartWind(int min, int max)
         {

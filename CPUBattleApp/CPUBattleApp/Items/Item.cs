@@ -14,7 +14,7 @@ namespace CPUBattleApp.Items
 
         public Item(string name)
         {
-
+            Name = name;
         }
 
         public Item(string name, int towerStat)

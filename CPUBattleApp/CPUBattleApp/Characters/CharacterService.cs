@@ -129,13 +129,13 @@ namespace CPUBattleApp.Characters
             switch (gemName)
             {
                 case ("sapphire"):
-                    character.PlayerGem = new Gem("Sapphire");
+                    character.PlayerGem = new Gem("sapphire");
                     break;
                 case ("diamond"):
-                    character.PlayerGem = new Gem("Diamond");
+                    character.PlayerGem = new Gem("diamond");
                     break;
                 case ("ruby"):
-                    character.PlayerGem = new Gem("Ruby");
+                    character.PlayerGem = new Gem("ruby");
                     break;
             }
         }
