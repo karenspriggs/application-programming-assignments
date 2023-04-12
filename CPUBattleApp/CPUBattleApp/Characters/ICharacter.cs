@@ -13,6 +13,7 @@ namespace CPUBattleApp.Characters
         string UniformColor { get; set; }
         List<IItem> Inventory { get; set; }
         ConsoleColor UniformTextColor { get; set; }
+        string GemName { get; set; }
         Gem PlayerGem { get; set; }
         int TowerHeight { get; set; }
 

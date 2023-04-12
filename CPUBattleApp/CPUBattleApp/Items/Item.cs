@@ -12,6 +12,11 @@ namespace CPUBattleApp.Items
         public string Description { get; set; }
         public int TowerStat { get; set; }
 
+        public Item(string name)
+        {
+
+        }
+
         public Item(string name, int towerStat)
         {
             Name = name;

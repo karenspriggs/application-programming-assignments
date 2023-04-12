@@ -14,7 +14,7 @@ namespace CPUBattleApp.Characters
         [NameLength(MaxLength = 10, MinLength = 1)]
         public string Name { get; set; }
 
-        [InventoryLength(MaxLength = 2)]
+        [InventoryLength(Length = 2)]
         public List<IItem> Inventory { get; set; }
 
         [UniformColor(UniformColors = "blue green yellow purple")]
@@ -23,9 +23,16 @@ namespace CPUBattleApp.Characters
         public ConsoleColor UniformTextColor { get; set; }
 
         [GemName(GemTypes = "sapphire diamond ruby")]
+        public string GemName { get; set; }
+        
         public Gem PlayerGem { get; set; }
 
         public int TowerHeight { get; set; } = 0;
+
+        public Character()
+        {
+            Inventory = new List<IItem>();
+        }
 
         public void Update(Wind wind)
         {
@@ -45,6 +52,8 @@ namespace CPUBattleApp.Characters
             {
                 progress += i.TowerStat;
             }
+
+            TowerHeight += progress;
 
             Console.WriteLine($"{Name} added {progress} blocks to their tower, making it {TowerHeight} blocks high");
 

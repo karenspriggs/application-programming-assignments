@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CPUBattleApp.Characters
 {
+    // Class for handling logic for setting values for properties of characters
     public class CharacterService
     {
         // Validate the character and create a list of any errors encountered during validation
@@ -18,11 +19,11 @@ namespace CPUBattleApp.Characters
 
             var isCharValid = Validator.TryValidateObject(character, charValidationContext, validationErrors, true);
 
-            foreach(var error in validationErrors)
+            foreach (var error in validationErrors)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
 
-                foreach(var errorName in error.MemberNames)
+                foreach (var errorName in error.MemberNames)
                 {
                     Console.WriteLine($"Error in creating character. Error type: {errorName}");
                 }
@@ -33,8 +34,51 @@ namespace CPUBattleApp.Characters
             return validationErrors;
         }
 
-        // Set the console color for the uniform color based off of the validated string for the uniform color
+        // Save the string for the name, will be validated later
+        public void SetCharName(ICharacter character, string name)
+        {
+            character.Name = name;
+        }
+
+        // Adds items to the player's inventory based off of their input
+        public void SetInventoryItem(ICharacter character, string num)
+        {
+            switch (num)
+            {
+                case ("1"):
+                    character.Inventory.Add(new Item("Block-laying glue", 2));
+                    break;
+                case ("2"):
+                    character.Inventory.Add(new Item("Block crane", 3));
+                    break;
+                case ("3"):
+                    character.Inventory.Add(new Item("Block generator", 4));
+                    break;
+                case ("4"):
+                    character.Inventory.Add(new Item("Block", 1));
+                    break;
+                case ("5"):
+                    character.Inventory.Add(new Item("Block-fetching dog", 3));
+                    break;
+                case ("6"):
+                    character.Inventory.Add(new Item("Block^2", 2));
+                    break;
+            }
+        }
+
+        public void ClearInventoryItems(ICharacter character)
+        {
+            character.Inventory.Clear();
+        }
+
+        // Save the string for the uniform color, will be validated later
         public void SetUniformColor(ICharacter character, string color)
+        {
+            character.UniformColor = color;
+        }
+
+        // Set the console color for the uniform color based off of the validated string for the uniform color
+        public void SetUniformConsoleColor(ICharacter character, string color)
         {
             switch (color)
             {
@@ -59,18 +103,24 @@ namespace CPUBattleApp.Characters
             switch (color)
             {
                 case ("yellow"):
-                    SetUniformColor(cpuChar, "purple");
+                    SetUniformConsoleColor(cpuChar, "purple");
                     break;
                 case ("blue"):
-                    SetUniformColor(cpuChar, "green");
+                    SetUniformConsoleColor(cpuChar, "green");
                     break;
                 case ("green"):
-                    SetUniformColor(cpuChar, "blue");
+                    SetUniformConsoleColor(cpuChar, "blue");
                     break;
                 case ("purple"):
-                    SetUniformColor(cpuChar, "yellow");
+                    SetUniformConsoleColor(cpuChar, "yellow");
                     break;
             }
+        }
+
+        // Save the string for the gem type, will be validated later
+        public void SetGemName(ICharacter character, string gemName)
+        {
+            character.GemName = gemName;
         }
 
         // Set the console color for the gem based off of the validated string for the gem type

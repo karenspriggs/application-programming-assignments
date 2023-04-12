@@ -16,7 +16,9 @@ namespace CPUBattleApp.Decorators
 
         public override bool IsValid(object value)
         {
-            if (value == null || !UniformColors.Contains(((string)value).ToLower()))
+            List<string> colorNames = UniformColors.Split(' ').ToList();
+
+            if (value == null || !colorNames.Contains(((string)value).ToLower()))
             {
                 return false;
 

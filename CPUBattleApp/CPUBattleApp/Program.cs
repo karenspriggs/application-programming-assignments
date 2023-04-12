@@ -14,7 +14,7 @@ namespace CPUBattleApp
             Character playerChar = new Character();
             Character computerChar = new Character() { Name = "Puter", Inventory = new List<Items.IItem>() { new Items.Item("Thing1", 2), new Items.Item("Thing2", 3) } };
 
-            Game<ICharacter, ICharacter> game = new Game<ICharacter, ICharacter>();
+            Game<Character, Character> game = new Game<Character, Character>();
 
             game.BeginGame(playerChar, computerChar);
         }

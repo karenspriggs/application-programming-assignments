@@ -15,7 +15,8 @@ namespace CPUBattleApp.Decorators
 
         public override bool IsValid(object value)
         {
-            if (value == null || !GemTypes.Contains(((string)value).ToLower()))
+            List<string> gemNames = GemTypes.Split(' ').ToList();
+            if (value == null || !gemNames.Contains(((string)value).ToLower()))
             {
                 return false;
 

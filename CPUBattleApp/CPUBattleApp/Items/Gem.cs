@@ -8,7 +8,7 @@ namespace CPUBattleApp.Items
 {
     public class Gem : Item
     {
-        public Gem(string name)
+        public Gem(string name) : base(name)
         {
             this.Name = name;
             this.Description = $"A {name}";
