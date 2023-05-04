@@ -47,21 +47,27 @@ namespace CPUBattleApp.Characters
             {
                 case ("1"):
                     character.Inventory.Add(new Item("Block-laying glue", 2));
+                    character.InventoryNums.Add(1);
                     break;
                 case ("2"):
                     character.Inventory.Add(new Item("Block crane", 3));
+                    character.InventoryNums.Add(2);
                     break;
                 case ("3"):
                     character.Inventory.Add(new Item("Block generator", 4));
+                    character.InventoryNums.Add(3);
                     break;
                 case ("4"):
                     character.Inventory.Add(new Item("Block", 1));
+                    character.InventoryNums.Add(4);
                     break;
                 case ("5"):
                     character.Inventory.Add(new Item("Block-fetching dog", 3));
+                    character.InventoryNums.Add(5);
                     break;
                 case ("6"):
                     character.Inventory.Add(new Item("Block^2", 2));
+                    character.InventoryNums.Add(6);
                     break;
             }
         }
@@ -138,6 +144,12 @@ namespace CPUBattleApp.Characters
                     character.PlayerGem = new Gem("ruby");
                     break;
             }
+        }
+
+        // Increment the amount of attempts that the player has made
+        public void IncrementAttempts(ICharacter character)
+        {
+            character.Attempts++;
         }
     }
 }

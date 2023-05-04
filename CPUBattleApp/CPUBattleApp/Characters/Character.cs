@@ -13,9 +13,12 @@ namespace CPUBattleApp.Characters
         // Character properties
         [NameLength(MaxLength = 10, MinLength = 1)]
         public string Name { get; set; }
+        public int ID { get; set; }
 
         [InventoryLength(Length = 2)]
         public List<IItem> Inventory { get; set; }
+
+        public List<int> InventoryNums { get; set; }
 
         [UniformColor(UniformColors = "blue green yellow purple")]
         public string UniformColor { get; set; }
@@ -28,6 +31,8 @@ namespace CPUBattleApp.Characters
         public Gem PlayerGem { get; set; }
 
         public int TowerHeight { get; set; } = 0;
+
+        public int Attempts { get; set; } = 0;
 
         public Character()
         {

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using CPUBattleApp.Characters;
 using System.ComponentModel.DataAnnotations;
+using ServiceLayer.Models;
+using ServiceLayer;
 
 namespace CPUBattleApp
 {
@@ -12,6 +14,8 @@ namespace CPUBattleApp
                                   where U : ICharacter
     {
         int TurnNumber = 1;
+        DAL dataService = new DAL();
+
         public void BeginGame(T char1, U char2)
         {
             PlayerSetup(char1);
@@ -147,10 +151,14 @@ namespace CPUBattleApp
 
             // Computer character property
             charService.GetCPUUniformColor(computer, playerCharacter.UniformColor);
+
+            CreatePlayerRecord(playerCharacter);
         }
 
         public void Play(ICharacter playerCharacter, ICharacter computer)
-        { 
+        {
+            CharacterService charService = new CharacterService();
+
             // Initialize the wind and attach both characters
             Wind wind = new Wind();
             wind.StartWind(1, 3);
@@ -182,6 +190,9 @@ namespace CPUBattleApp
                 Console.WriteLine("\nThe computer won!");
             }
 
+            charService.IncrementAttempts(playerCharacter);
+            SavePlayerRecord(playerCharacter);
+
             Console.ReadKey();
         }
 
@@ -201,6 +212,41 @@ namespace CPUBattleApp
         public void TakeTurn(ICharacter turnCharacter)
         {
             turnCharacter.DescribeTurn();
+        }
+
+        // Used to create the record for a player and put it in the database with the new API
+        void CreatePlayerRecord(ICharacter playerCharacter)
+        {
+            UserModel user = MakeUserModel(playerCharacter);
+
+            // Make player id
+            dataService.APIInsertRecord(user);
+        }
+
+        // Used to save and update the record of an existing player character after finishing the game
+        void SavePlayerRecord(ICharacter playerCharacter)
+        {
+            UserModel user = MakeUserModel(playerCharacter);
+
+            // Make player id
+            dataService.APIUpdateRecord(user);
+        }
+
+        // Create an instance of the user model based off of the character being passed in
+        UserModel MakeUserModel(ICharacter playerCharacter)
+        {
+            UserModel user = new UserModel();
+
+            user.PlayerID = playerCharacter.ID;
+            user.PlayerName = playerCharacter.Name;
+            user.PlayerAttempts = playerCharacter.Attempts;
+            user.UniformColor = playerCharacter.UniformColor;
+            user.GemstoneName = playerCharacter.GemName;
+            user.TowerHeight = playerCharacter.TowerHeight;
+            user.ItemOneID = playerCharacter.InventoryNums[0];
+            user.ItemTwoID = playerCharacter.InventoryNums[1];
+
+            return user;
         }
     }
 }
