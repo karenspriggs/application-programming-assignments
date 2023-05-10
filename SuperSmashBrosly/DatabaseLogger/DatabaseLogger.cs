@@ -36,7 +36,7 @@ namespace DatabaseLogger
             SqlConnectionStringBuilder connBldr = new SqlConnectionStringBuilder();
             connBldr.DataSource = $"(localdb)\\MSSQLLocalDB";
             connBldr.IntegratedSecurity = true;
-            connBldr.InitialCatalog = $"PROG455FA22";
+            connBldr.InitialCatalog = $"PROG455FA23";
             _sqlConnString = connBldr.ConnectionString;
         }
     }

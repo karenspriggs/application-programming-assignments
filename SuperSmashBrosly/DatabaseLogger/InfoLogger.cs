@@ -26,7 +26,7 @@ namespace DatabaseLogger
 
         public void Log(LogMessage messageToLog)
         {
-            string query = $"Insert into dbo.Log (LogLevel,LogMessage)" +
+            string query = $"Insert into dbo.SmashBrosLog (LogLevel,LogMessage)" +
                 $"VALUES( '{messageToLog.LogType}','{messageToLog.Message}')";
 
             using (SqlConnection conn = new SqlConnection(sqlConnectionString))
