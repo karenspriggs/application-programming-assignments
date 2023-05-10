@@ -36,11 +36,11 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF EXISTS(SELECT * FROM dbo.TowerGame WHERE @PlayerID = @PlayerID)
+	IF EXISTS(SELECT * FROM dbo.TowerGame WHERE id = @PlayerID)
 	BEGIN
 	UPDATE dbo.TowerGame
-	SET id = @PlayerID, userName = @Playername, attempts = @Attempts, uniformColor = @UniformColor, gemstoneName = @GemstoneName, towerHeight = @TowerHeight, itemOneID = @ItemOneID, itemTwoID = @ItemTwoID
-	WHERE @PlayerID = @PlayerID
+	SET userName = @Playername, attempts = @Attempts, uniformColor = @UniformColor, gemstoneName = @GemstoneName, towerHeight = @TowerHeight, itemOneID = @ItemOneID, itemTwoID = @ItemTwoID
+	WHERE id = @PlayerID
 	SET @ReturnValue = 1
 	END
 	ELSE 

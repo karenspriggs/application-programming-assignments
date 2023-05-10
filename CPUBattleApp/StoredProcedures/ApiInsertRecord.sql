@@ -36,10 +36,10 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	IF NOT EXISTS(SELECT * FROM dbo.TowerGame WHERE @PlayerID = @PlayerID)
+	IF NOT EXISTS(SELECT * FROM dbo.TowerGame WHERE id = @PlayerID)
 	BEGIN
 	INSERT INTO dbo.TowerGame
-	Values(@PlayerID, @Playername, @Attempts, @UniformColor, @GemstoneName, @TowerHeight, @ItemOneID, @ItemTwoID)
+	Values(@Playername, @Attempts, @UniformColor, @GemstoneName, @TowerHeight, @ItemOneID, @ItemTwoID)
 	SET @ReturnValue = 1
 	END
 	ELSE 
