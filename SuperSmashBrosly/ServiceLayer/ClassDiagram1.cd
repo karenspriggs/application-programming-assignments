@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ServiceLayer.DAL.FighterDAL">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAARQAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\FighterDAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.DAL.UserDAL">
+    <Position X="2.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAgAAAAAAARQAAAAAAAAIAAA=</HashCode>
+      <FileName>DAL\UserDAL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.Decorators.PasswordValidationAttribute">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Decorators\PasswordValidationAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.Decorators.UsernameLengthAttribute">
+    <Position X="6" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAgAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Decorators\UsernameLengthAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.Models.FighterModel">
+    <Position X="12.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAQAACAAAAAAAAAAEAgAAAA=</HashCode>
+      <FileName>Models\FighterModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.Models.UserModel">
+    <Position X="4.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAgAAAAQAAAAAAAAAAAAACAAACAAEAAAA=</HashCode>
+      <FileName>Models\UserModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ServiceLayer.FighterQuizService">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAABAAAAAAAAgCRAAAAAAAA=</HashCode>
+      <FileName>FighterQuizService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLayer.UserAccountService">
+    <Position X="0.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQIAAAAACCAAAAABAAAgACAAAAAACAAgAAAAgA=</HashCode>
+      <FileName>UserAccountService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ServiceLayer.Models.IUser">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAQAAAAAAAAAAAAACAAACAAEAAAA=</HashCode>
+      <FileName>Models\IUser.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

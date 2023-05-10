@@ -10,7 +10,6 @@ namespace ServiceLayer
 {
     public class FighterQuizService
     {
-        FighterDAL fighterDAL = new FighterDAL();
         Random random = new Random();
 
         // Generates the message to print to the player to either tell them that they guessed correctly
@@ -54,18 +53,21 @@ namespace ServiceLayer
         // Check if a fighter exists, used to tell if the player has inputted a valid guess
         public bool CheckIfFighterExists(string name)
         {
+            FighterDAL fighterDAL = new FighterDAL();
             return fighterDAL.APIGetbyName(name).Count == 1;
         }
 
         // Get the fighter with this name to compare to the answer
         public FighterModel GetFighterWithName(string name)
         {
+            FighterDAL fighterDAL = new FighterDAL();
             return fighterDAL.APIGetbyName(name)[0];
         } 
 
         // Get a random fighter from the database to use as the answer
         public FighterModel GetRandomFighter()
         {
+            FighterDAL fighterDAL = new FighterDAL();
             List<FighterModel> allFighters = fighterDAL.APIGetAll();
 
             int index = random.Next(allFighters.Count);

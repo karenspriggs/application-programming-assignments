@@ -11,8 +11,8 @@ namespace ServiceLayer.Models
     {
         public int ID { get; set; }
 
-        // Username will have to be between six and sixteen characters
-        [UsernameLength(MaxLength =16, MinLength =6)]
+        // Username will have to be between four and sixteen characters
+        [UsernameLength(MaxLength =16, MinLength =4)]
         public string Username { get; set; }
 
         [PasswordValidation(MinLength=6)]

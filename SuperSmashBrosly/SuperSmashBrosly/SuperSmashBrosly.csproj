@@ -51,6 +51,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DatabaseLogger\DatabaseLogger.csproj">
+      <Project>{c722c77f-9455-440a-b637-225bb0c2abd3}</Project>
+      <Name>DatabaseLogger</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceLayer\ServiceLayer.csproj">
       <Project>{b52fc964-a5c1-4329-8d53-b763eece2b1a}</Project>
       <Name>ServiceLayer</Name>

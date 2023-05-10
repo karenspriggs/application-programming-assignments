@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ServiceLayer.Models;
 using ServiceLayer;
 using ServiceLayer.DAL;
+using DatabaseLogger;
 
 namespace SuperSmashBrosly
 {
@@ -27,9 +28,11 @@ namespace SuperSmashBrosly
         UserAccountService userService = new UserAccountService();
 
         UserModel currentUser;
+        DatabaseLogger.DatabaseLogger dbLogger;
 
         public Game()
         {
+            dbLogger = new DatabaseLogger.DatabaseLogger();
             Start();
         }
 
@@ -93,6 +96,8 @@ namespace SuperSmashBrosly
             }
         }
 
+        // Attempt to create an account, the only reasons this would fail is if there is already an account with the provided
+        // username or if the inputs are not valid
         void AttemptCreateAccount()
         {
             Console.Clear();
@@ -104,13 +109,26 @@ namespace SuperSmashBrosly
             string password = Console.ReadLine();
 
             // Also make sure to validate with decorators
+            bool isValidated = userService.ValidateAccountInputs(username, password);
+
+            if (!isValidated)
+            {
+                Console.WriteLine("The values that you entered are not valid, please hit enter and then try again");
+                Console.ReadKey();
+                AttemptCreateAccount();
+            }
 
             string createAccountResult = userService.CreateAccount(username, password);
 
             if (createAccountResult == "success")
             {
+                dbLogger.LogMessage(new LogMessage() { LogType="Info", Message=$"New account created with username {username}"});
+
                 isLoggedIn = true;
                 currentUser = userService.GetCurrentUser();
+            } else
+            {
+                dbLogger.LogMessage(new LogMessage() { LogType = "Error", Message = $"Error creating new account: {createAccountResult}" });
             }
         }
 
@@ -141,7 +159,14 @@ namespace SuperSmashBrosly
             if (loginResult == "Login success!")
             {
                 isLoggedIn = true;
+                dbLogger.LogMessage(new LogMessage() { LogType = "Info", Message = $"Logged into account with the username {username}" });
                 currentUser = userService.GetCurrentUser();
+            }
+            else
+            {
+                Console.WriteLine("Login not successful, hit enter to try again");
+                dbLogger.LogMessage(new LogMessage() { LogType = "Error", Message = $"Error logging in: {loginResult}" });
+                Console.ReadKey();
             }
         }
 
@@ -169,6 +194,7 @@ namespace SuperSmashBrosly
 
             if (!guestMode)
             {
+                dbLogger.LogMessage(new LogMessage() { LogType = "Info", Message = $"Updated info for user {currentUser.Username}" });
                 userService.SaveProgress(currentUser);
             }
 
@@ -202,9 +228,9 @@ namespace SuperSmashBrosly
 
             string result = fighterService.CompareFighterModels(guessedFighter, answer);
 
-            if (result == $"Congrats, the answer was {guessedFighter.Name}")
+            if (result == $"\nCongratulations, the answer was {guessedFighter.Name}")
             {
-                Console.WriteLine("Congrats, you have guessed correctly!");
+                Console.WriteLine($"\nCongratulations, you have guessed correctly! The answer was {guessedFighter.Name}");
                 hasWon = true;
                 currentUser.CorrectGuesses++;
                 currentUser.LastFighterGuessed = guessedFighter.Name;

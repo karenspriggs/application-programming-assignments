@@ -32,7 +32,7 @@ namespace ServiceLayer
 
                 foreach (var errorName in error.MemberNames)
                 {
-                    Console.WriteLine($"Error in creating character. Error type: {errorName}");
+                    Console.WriteLine($"Error in creating user. Error type: {errorName}");
                 }
             }
 
@@ -107,7 +107,7 @@ namespace ServiceLayer
 
             UserModel attemptedUser = users[0];
 
-            if (attemptedUser.Password != EncryptPassword(password))
+            if (!attemptedUser.Password.Contains(EncryptPassword(password)))
             {
                 return "Incorrect password, please try again";
             }
