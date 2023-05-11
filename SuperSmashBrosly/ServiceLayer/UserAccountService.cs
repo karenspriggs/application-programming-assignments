@@ -49,11 +49,11 @@ namespace ServiceLayer
 
         public string DescribeUser(UserModel currentUser)
         {
-            int Attempts = currentUser.Attempts;
+            float Attempts = (float)currentUser.Attempts;
 
             if (Attempts == 0) Attempts = 1;
 
-            return $"Player Name: {currentUser.Username}\nGuess Accuracy Rate: {(currentUser.CorrectGuesses / Attempts)*100}%\nLast Guessed Character: {currentUser.LastFighterGuessed}";
+            return $"Player Name: {currentUser.Username}\nGuess Accuracy Rate: {((float)currentUser.CorrectGuesses / Attempts)*100}%\nLast Guessed Character: {currentUser.LastFighterGuessed}";
         }
 
         // Create an account with the inputted username and password
